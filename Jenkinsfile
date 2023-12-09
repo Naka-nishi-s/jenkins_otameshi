@@ -5,6 +5,9 @@ pipeline{
     REACT_DIR = 'nie'
   }
 
+  tools{
+    nodejs "Node_20.10.0"
+  }
 
   stages{
     stage('Check out'){
