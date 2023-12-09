@@ -1,6 +1,11 @@
 pipeline{
   agent any
 
+  environment{
+    REACT_DIR = 'nie'
+  }
+
+
   stages{
     stage('Check out'){
       steps{
@@ -10,13 +15,17 @@ pipeline{
 
     stage('npm install'){
       steps{
-        sh 'npm install'
+        dir("${env.REACT_DIR}"){
+          sh 'npm install'
+        }
       }
     }
 
     stage('build'){
       steps{
-        sh 'npm run build'
+        dir("${env.REACT_DIR}"){
+          sh 'npm run build'
+        }
       }
     }
 
